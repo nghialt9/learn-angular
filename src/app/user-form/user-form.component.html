@@ -1,0 +1,5 @@
+<div *ngFor="let employee of Employees">
+    <a routerLink="/book/{{ employee.id }}">{{ employee.name }}</a>
+</div>
+<h1 [class] = "isHighlight ? 'circle' : 'square'" ></h1>
+<div [class.circle]="!isHighlight" [class.square]="isHighlight"></div>
