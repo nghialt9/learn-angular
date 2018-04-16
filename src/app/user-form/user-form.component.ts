@@ -1,21 +1,27 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Employee } from '../model/employees.model';
 
 @Component({
-  // tslint:disable-next-line:component-selector
   selector: 'user-form',
   templateUrl: './user-form.component.html',
   styleUrls: ['./user-form.component.css']
 })
-export class UserFormComponent implements OnInit {
-  Employees = [
-    {id: '001', name: 'Tèo', addr: 'TP.HCM', age: 33},
-    {id: '002', name: 'Nam', addr: 'TP.Hà Nội', age: 32},
-    {id: '003', name: 'Tùng', addr: 'TP.Vinh', age: 31},
-    {id: '004', name: 'Tính', addr: 'TP.Huế', age: 30}
-  ];
-  isHighlight = true;
+export class UserFormComponent {
+  @Input() employees: Employee[] = [{
+    ID: "001", Name: "Nghĩa", ImagePath: "assets/images/employees/Ngay5Hue1.jpg", Sex: "Male"
+  }, {
+    ID: "002", Name: "Phương", ImagePath: "assets/images/employees/Ngay5Hue2.jpg", Sex: "FeMale"
+  },
+  {
+    ID: "003", Name: "Trí", ImagePath: "assets/images/employees/Ngay5Hue3.jpg", Sex: "Male"
+  },
+  {
+    ID: "004", Name: "Tùng", ImagePath: "assets/images/employees/Ngay5Hue4.jpg", Sex: "Male"
+  }];
+  @Output() employeesUpdated: EventEmitter<Employee> = new EventEmitter<Employee>();
   constructor() { }
-
-  ngOnInit() {
+  update(index:number) {
+    // later you will see what this is for
+    this.employeesUpdated.emit(this.employees[index]);
   }
 }
