@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 
 @Component({
     templateUrl: './work.component.html',
-    // tslint:disable-next-line:component-selector
     selector: 'work',
     styleUrls: ['./work.component.css']
   })
