@@ -11,10 +11,17 @@ export class EmployeeComponent {
     Name:string;
     Sex:string;
     Image:string;
+    forgot:boolean = false;
+    hideSaveButton:boolean = true;
+    hideDeleteButton:boolean = false;
+    
     receiveEmployee($event) {
         this.ID = $event.ID;
         this.Name = $event.Name;
         this.Sex = $event.Sex;
         this.Image = $event.ImagePath;
+    }
+    toogleForgot(){
+        this.forgot = false;
     }
 }

@@ -18,8 +18,10 @@ export class UserFormComponent {
   {
     ID: "004", Name: "Tùng", ImagePath: "assets/images/employees/Ngay5Hue4.jpg", Sex: "Male"
   }];
+  Boolean: boolean;
   @Output() employeesUpdated: EventEmitter<Employee> = new EventEmitter<Employee>();
-  constructor() { }
+  constructor() {
+  }
   update(index:number) {
     // later you will see what this is for
     this.employeesUpdated.emit(this.employees[index]);

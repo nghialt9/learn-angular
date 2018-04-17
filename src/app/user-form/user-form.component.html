@@ -1,3 +1,16 @@
-<div *ngFor="let employee of employees">
-    <a (click)="update(employees.indexOf(employee))">{{ employee.Name }}</a>
+<div class="container">
+    <table class="table table-bordered table-condensed">
+        <thead class="thead">
+            <th>ID</th>
+            <th>Name</th>
+            <th>Sex</th>
+            <th>Image</th>
+        </thead>
+        <tbody class="tbody success" *ngFor="let employee of employees">
+            <td class="id" (click)="update(employees.indexOf(employee))">{{employee.ID}}</td>
+            <td>{{employee.Name}}</td>
+            <td>{{employee.Sex}}</td>
+            <td>{{employee.ImagePath}}</td>
+        </tbody>
+    </table>
 </div>

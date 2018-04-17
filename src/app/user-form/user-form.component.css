@@ -1,12 +1,9 @@
-.circle{
-    width: 50px;
-    height: 50px;
-    border-radius: 25px;
-    background-color: blue;
+.btn{ overflow: hidden; background: #fff; box-shadow: 0px 2px 10px rgba(0,0,0, .3); width: 90px;}
+
+.id{
+    cursor: pointer;
+    color: blue;
 }
-.square{
-    width: 50px;
-    height: 50px;
-    border-radius: 2px;
-    background-color: blue;
+.id:hover{
+    color: red;
 }

@@ -1,0 +1,7 @@
+.menu { overflow: hidden; background: #fff; box-shadow: 0px 2px 10px rgba(0,0,0, .3); }
+.menu > a{ height: 60px; line-height: 60px;  border-right: 1px solid #eee; }
+
+.menu > a:hover{  background: #eee; }
+
+.menu > a{ border-left: 1px solid #eee; }
+.container{overflow: hidden; background: #fff; box-shadow: 0px 2px 10px rgba(0,0,0, .3); }
