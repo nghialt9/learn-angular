@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule} from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { EmployeeModule } from './employees/employee.module'
+import { FormsModule } from '@angular/forms';
 
 const routesConfig: Routes = [
     {path: '', redirectTo: '/work', pathMatch: 'full'},
@@ -22,6 +23,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     ],
     imports: [
         EmployeeModule,
+        FormsModule,
         RouterModule.forRoot(routesConfig),
         CommonModule
     ],
