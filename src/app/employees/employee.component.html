@@ -1,6 +1,6 @@
-<user-form (employeesUpdated)="receiveEmployee($event)"></user-form>
+<user-form (employeesUpdated)="receiveEmployee($event)" (valueBoolean)="receiveValueBoolean($event)"></user-form>
 
-<div class="row">
+<div class="row" [hidden]='hideForm'>
     <div class="col-md-2">
         <label for="id">ID: </label>
     </div>
@@ -17,15 +17,46 @@
         <label for="sex ">Sex: </label>
     </div>
     <div class="col-md-10">
-        <input type="text " class="form-control " value=" {{Sex}} " id="sex " [disabled]='forgot' />
+        <input type="text" class="form-control " value=" {{Sex}} " id="sex " [disabled]='forgot' />
+    </div>
+    <div [hidden]='hideImageEdit'>
+        <div class="col-md-2">
+            <label for="sex ">Image: </label>
+        </div>
+        <div class="col-md-10">
+            <input type="file" (change)="changeLogo($event)" #EmpImage formControlName="EmpImage" accept="image/*" file-input="files"
+                [disabled]='forgot' />
+        </div>
     </div>
     <div class="col-md"></div>
     <div class="col-md">
-        <button class="btn btn-warning btn-xs" type="submit">Edit</button>
+        <button (click)="Edit()" class="btn btn-warning btn-xs" type="submit">Edit</button>
         <button class="btn btn-success btn-xs" type="submit" [hidden]='hideSaveButton'>Save</button>
         <button class="btn btn-danger btn-xs" type="submit" [hidden]='hideDeleteButton'>Delete</button>
     </div>
     <div class="col-md">
-        <input type="image" src="{{Image}} " width="690 " height="500 " [hidden]='forgot' disabled />
+        <input type="image" src="{{Image}} " width="690 " height="500 " [hidden]='!forgot' disabled />
+    </div>
+    <div class="col-md">
+        <img [src]="Logo" width="690 " height="500 " />
     </div>
 </div>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.min.js"></script>
+<script>
+    var myApp = angular.module("myApp", []);
+
+    myApp.controller("MyController", ["$scope", function ($scope) {
+        $scope.fruitArraySource = ["Mango", "Apple"];
+        $scope.fruitArrayDestination = ["Orange", "Grapes"];
+        angular.copy($scope.fruitArraySource, $scope.fruitArrayDestination);
+
+        $scope.studentObjectSource = {
+            "name": "Sandeep"
+        };
+        $scope.subjectObjectDestination = {
+            "subject": "computer"
+        };
+        angular.extend($scope.subjectObjectDestination,
+            $scope.studentObjectSource);
+    }]);
+</script>

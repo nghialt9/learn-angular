@@ -20,10 +20,12 @@ export class UserFormComponent {
   }];
   Boolean: boolean;
   @Output() employeesUpdated: EventEmitter<Employee> = new EventEmitter<Employee>();
+  @Output() valueBoolean = new EventEmitter<Boolean>();
   constructor() {
   }
   update(index:number) {
     // later you will see what this is for
     this.employeesUpdated.emit(this.employees[index]);
+    this.valueBoolean.emit(this.Boolean = true)
   }
 }
