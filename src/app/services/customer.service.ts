@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
+import { Headers, Http, Response, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
@@ -7,7 +7,7 @@ import 'rxjs/add/observable/throw';
 
 @Injectable()
 export class CustomerService {
-    baseUrl: string = 'http://localhost:64104/api/customer/'
+    baseUrl: string = 'http://localhost:9355/api/customer/'
 
     constructor(private _http: Http) { }
 
@@ -31,7 +31,9 @@ export class CustomerService {
     }
 
     saveCustomer(customer) {
-        return this._http.post(this.baseUrl + 'savecustomer', customer)
+        let options = new RequestOptions(
+            { headers: this.getContentHeaders()});
+        return this._http.post(this.baseUrl + 'savecustomer', customer, options)
             .map((response: Response) => response.json())
             .catch(this._errorHandler)
     }
@@ -40,6 +42,22 @@ export class CustomerService {
         return this._http.delete(this.baseUrl + "DeleteCustomer/" + id)
             .map((response: Response) => response.json())
             .catch(this._errorHandler)
+    }
+
+    getContentHeaders() {
+        const contentHeaders = new Headers();
+        contentHeaders.append('Content-Type', 'application/json');
+        contentHeaders.append('Accept', 'application/json');
+      
+        contentHeaders.append('Access-Control-Allow-Origin', this.baseUrl);
+        contentHeaders.append('Access-Control-Allow-Credentials', 'true');
+
+        contentHeaders.append('Access-Control-Allow-Methods', 'OPTIONS');
+        contentHeaders.append('Access-Control-Allow-Methods', 'PUT');
+        contentHeaders.append('Access-Control-Allow-Methods', 'POST');
+        contentHeaders.append('Access-Control-Allow-Methods', 'GET');
+        contentHeaders.append('Access-Control-Allow-Methods', 'DELETE');
+        return contentHeaders;
     }
 
 }
