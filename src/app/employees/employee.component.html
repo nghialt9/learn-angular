@@ -41,22 +41,3 @@
         <img [src]="Logo" width="690 " height="500 " />
     </div>
 </div>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.min.js"></script>
-<script>
-    var myApp = angular.module("myApp", []);
-
-    myApp.controller("MyController", ["$scope", function ($scope) {
-        $scope.fruitArraySource = ["Mango", "Apple"];
-        $scope.fruitArrayDestination = ["Orange", "Grapes"];
-        angular.copy($scope.fruitArraySource, $scope.fruitArrayDestination);
-
-        $scope.studentObjectSource = {
-            "name": "Sandeep"
-        };
-        $scope.subjectObjectDestination = {
-            "subject": "computer"
-        };
-        angular.extend($scope.subjectObjectDestination,
-            $scope.studentObjectSource);
-    }]);
-</script>
